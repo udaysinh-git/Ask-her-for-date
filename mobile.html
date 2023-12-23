@@ -2,8 +2,39 @@
 <html>
 <head>
     <title>Desktop Only</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 32px;
+            animation: color-change 2s infinite;
+        }
+
+        .emoji {
+            font-size: 50px;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes color-change {
+            0% { color: red; }
+            50% { color: blue; }
+            100% { color: green; }
+        }
+
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
     <h1>Please use a desktop to view this website</h1>
+    <div class="emoji">😀 😃 😄 😁 😆 😅 😂 🤣</div>
 </body>
 </html>
