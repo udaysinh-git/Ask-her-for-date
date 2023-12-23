@@ -4,37 +4,55 @@
     <title>Desktop Only</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Courier New', monospace;
             background-color: #f0f0f0;
             text-align: center;
             padding: 50px;
+            overflow: hidden;
+            position: relative;
+            height: 100vh;
         }
 
         h1 {
             font-size: 32px;
-            animation: color-change 2s infinite;
         }
 
         .emoji {
+            position: absolute;
             font-size: 50px;
-            animation: bounce 1s infinite;
+            animation: fall 4s linear infinite;
+            opacity: 0;
         }
 
-        @keyframes color-change {
-            0% { color: red; }
-            50% { color: blue; }
-            100% { color: green; }
-        }
-
-        @keyframes bounce {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0); }
+        @keyframes fall {
+            0% {
+                transform: translateY(-100%);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
         }
     </style>
 </head>
 <body>
     <h1>Please use a desktop to view this website</h1>
-    <div class="emoji">😀 😃 😄 😁 😆 😅 😂 🤣</div>
+    <div class="emoji">😀</div>
+    <div class="emoji">😃</div>
+    <!-- Add more divs with different emojis -->
+    <script>
+        var emojis = document.querySelectorAll('.emoji');
+        emojis.forEach(function(emoji) {
+            // Randomize the start time and speed
+            var delay = Math.random() * 2;
+            var duration = Math.random() * 3 + 2;
+            emoji.style.animationDelay = '-' + delay + 's';
+            emoji.style.animationDuration = duration + 's';
+            // Randomize the horizontal position
+            var left = Math.random() * 100;
+            emoji.style.left = left + '%';
+        });
+    </script>
 </body>
 </html>
