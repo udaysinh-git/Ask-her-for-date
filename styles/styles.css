@@ -414,3 +414,25 @@ body {
   display: block; /* Display the gif as a block element */
   margin: 0 auto; /* Center the gif horizontally */
 }
+
+/* Hide main content on small screens */
+@media (max-width: 768px) {
+  #main-content {
+    display: none;
+  }
+
+  #mobile-message {
+    display: block;
+  }
+}
+
+/* Hide mobile message on large screens */
+@media (min-width: 769px) {
+  #main-content {
+    display: block;
+  }
+
+  #mobile-message {
+    display: none;
+  }
+}
