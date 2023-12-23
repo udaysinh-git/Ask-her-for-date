@@ -1,0 +1,416 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *::after, *::before {
+  box-sizing: inherit;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  align-items: center;
+  background: rgb(0, 128, 128);
+  overflow: hidden;
+  font-family: 'Inconsolata', monospace;
+}
+
+
+#date-exe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  text-align: center; /* Center the text and the image */
+}
+
+#date-exe img {
+  display: block; /* Display the image as a block element */
+  margin: 0 auto; /* Center the image horizontally */
+}
+
+.window {
+  min-width: 200px; /* Minimum width */
+  max-width: 100%; /* Maximum width */
+  min-height: 100px; /* Minimum height */
+  max-height: 100%; /* Maximum height */
+  width: auto; /* Width based on content */
+  height: auto; /* Height based on content */
+  /* Other styles */
+  background-color: #c7c7c7;
+  padding: 4px;
+  border-left: 2px solid #FCFCFC;
+  border-top: 2px solid #FCFCFC;
+  border-right: 2px solid #2A2A2A;
+  border-bottom: 2px solid #2A2A2A;
+}
+
+.title-bar {
+  background-color: #000080;
+  padding: 4px;
+  height: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.title-bar > .minimize, .title-bar > .maximize, .title-bar > .close {
+  width: 26px;
+  height: 22px;
+  background-color: #c7c7c7;
+  margin-left: 4px;
+  border-left: 2px solid #FCFCFC;
+  border-top: 2px solid #FCFCFC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.title-bar > .minimize {
+  align-items: flex-end;
+}
+
+.title-bar > .minimize > .symbol {
+  width: 60%;
+  height: 3px;
+  background-color: #000000;
+  margin-bottom: 2px;
+}
+
+.title-bar > .maximize > .symbol {
+  width: 70%;
+  height: 80%;
+  border: 2px solid #000000;
+  border-top-width: 4px;
+}
+
+.title-bar > .close > .symbol {
+  width: 70%;
+  height: 3px;
+  background-color: #000000;
+  transform: rotate(45deg);
+}
+
+.title-bar > .close > .symbol::after {
+  content: '';
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: #000000;
+  transform: rotate(90deg);
+}
+
+.menu-bar > span {
+  padding: 8px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.menu-bar > span::first-letter {
+  text-decoration: underline;
+}
+
+.menu-bar > span:hover {
+  background-color: #bebebe;
+}
+
+.content-container {
+  font-family: 'MS Sans Serif', sans-serif; /* Windows 98 font */
+  background-color: #C0C0C0; /* Windows 98 background color */
+  /* padding: 10px; */
+  border-left: 2px solid #2A2A2A;
+  border-top: 2px solid #2A2A2A;
+  border-right: 2px solid #FCFCFC;
+  border-bottom: 2px solid #FCFCFC;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* padding: 20px; */
+}
+
+.content-container > .content {
+  display: flex;
+  height: 260px;
+  overflow: auto;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.content-container > .content > .main, .content-container > .content > .scroll-left {
+  height: 100%;
+}
+
+.content-container > .content > .main {
+  width: calc(100% - 26px);
+}
+
+.content-container > .content > .scroll {
+  width: 26px;
+}
+
+.content-container button {
+  font-family: 'MS Sans Serif', sans-serif; /* Windows 98 font */
+  background-color: #C0C0C0; /* Windows 98 button color */
+  border: 1px solid #000; /* Windows 98 button border */
+  padding: 5px 10px;
+  margin-right: 10px;
+  margin: 10px;
+}
+
+.content-container button:hover {
+  background-color: #808080; /* Windows 98 button hover color */
+}
+
+
+.content-container .main {
+  padding: 10px;
+}
+
+.content-container p {
+  font-size: 16px; /* Adjust as needed */
+  text-align: center;
+}
+
+.scroll {
+  background-color: #D7D7D7;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  overflow-y: auto; /* Add vertical scrolling */
+  overflow-x: hidden;
+}
+
+.scroll > .progress {
+  width: 24px;
+  height: 70%;
+  cursor: pointer;
+  border-left: 2px solid #FCFCFC;
+  border-top: 2px solid #FCFCFC;
+  background-color: #c7c7c7;
+}
+
+.scroll > .progress:hover {
+  background-color: #bebebe;
+}
+
+.scroll > .start, .scroll > .end {
+  width: 24px;
+  height: 22px;
+  position: relative;
+  border-left: 2px solid #FCFCFC;
+  border-top: 2px solid #FCFCFC;
+  background-color: #c7c7c7;
+}
+
+.scroll > .start::after, .scroll > .end::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 6px;
+  left: 4px;
+  border-top: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid #000000;
+}
+
+.scroll > .end::after {
+  transform: rotate(180deg);
+}
+
+.scroll.-row {
+  flex-direction: row;
+}
+
+.scroll.-row > .progress {
+  width: 30%;
+  height: 24px;
+}
+
+.scroll.-row > .start::after {
+  transform: rotate(-90deg);
+}
+
+.scroll.-row > .end::after {
+  transform: rotate(90deg);
+}
+
+.windows95 {
+  outline: none;
+  font-family: Helvetica;
+  background: #c0c0c0;
+  width: 120px;
+  margin: 15px;
+  padding: 0 20px 1px 20px;
+  font-size: 15px;
+  line-height: 12px;
+  vertical-align: middle;
+  border-bottom: 1px solid #808080;
+  border-right: 1px solid #808080;
+  border-left: 1px solid #c0c0c0;
+  border-top: 1px solid #c0c0c0;
+  box-shadow: -1px -1px white, 0px -1px white, -1px 0px white, 2px 2px black, -2px 2px black, 2px -2px black, -2px -2px black;
+}
+
+.windows95:hover {
+  outline: none;
+  background: #ccc;
+  margin: 0 15px 0 15px;
+  border-bottom: 1px solid #333;
+  border-right: 1px solid #808080;
+  border-left: 1px solid #fff;
+  border-top: 1px solid #fff;
+  box-shadow: -1px -1px white, 0px -1px white, -1px 0px white, 2px 2px black, -2px 2px black, 2px -2px black, -2px -2px black;
+}
+
+.windows95:active {
+  outline: none;
+  background: #bbb;
+  border-bottom: 1px solid #bbb;
+  border-right: 1px solid #bbb;
+  border-left: 1px solid #bbb;
+  border-top: 1px solid #bbb;
+}
+
+
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.dialog {
+  animation: fadeIn 1s;
+  transition: opacity 0.5s ease-out;
+  opacity: 1; /* Add this line */
+}
+#no:hover {
+  cursor: not-allowed;
+}
+
+/* #yes {
+  position: relative;
+  /* or you can use absolute, depending on your layout */
+  /* position: absolute; */
+/* }  */
+
+.icons-container {
+  position: absolute; /* Add this line */
+  top: 0; /* Add this line */
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* .icons-container > div {
+  margin-bottom: 10px;
+} */
+
+.icons-container > div > p {
+  margin-top: 5px; /* Adjust this value as needed */
+}
+
+#taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px; /* Adjust as needed */
+  background-color: #d0c4cc;
+  border-top: 3px solid black; /* Adjust as needed */
+}
+
+#clock {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'MS Sans Serif', sans-serif;
+  font-size: 14px; /* Adjust as needed */
+}
+
+#start-button {
+  display: flex;
+  align-items: center;
+  padding: 10px; /* Adjust as needed */
+  cursor: pointer;
+  background-color: #c0c0c0;
+  border-style: outset;
+  border-width: 2px;
+  border-color: #ffffff #808080 #808080 #ffffff;
+}
+
+
+#start-button img {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+#start-button span {
+  font-family: 'MS Sans Serif', sans-serif;
+  font-size: 14px;
+}
+
+#start-button:hover {
+  background-color: #e0e0e0;
+}
+
+#start-button:active {
+  background-color: #c0c0c0;
+  border-style: inset;
+}
+
+
+.heart {
+  position: fixed;
+  width: 32px; /* Adjust to match the image's width */
+  height: 32px; /* Adjust to match the image's height */
+  background-image: url('https://img.icons8.com/fluency/32/pixel-heart.png'); /* Replace with the provided heart image */
+  pointer-events: none;
+  animation: fall 2s linear forwards, fade 2s linear forwards;
+}
+
+@keyframes fall {
+  to { transform: translateY(100vh); }
+}
+
+@keyframes fade {
+  to { opacity: 0; }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.dialog .cat-gif {
+  width: 100%; /* Adjust as needed */
+  height: auto; /* Adjust as needed */
+  display: block; /* Display the gif as a block element */
+  margin: 0 auto; /* Center the gif horizontally */
+}

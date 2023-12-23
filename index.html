@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hiii !!!</title>
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+    <head>
+        <title>Hiii !!!</title>
+        <link rel="stylesheet" type="text/css" href="styles/styles.css">
+    </head>
+</head>
+<body>
+    <div id="splash-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #008080; color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'MS Sans Serif', Geneva, sans-serif; z-index: 1000; border: 2px solid #000; border-top-color: #fff; border-left-color: #fff;">
+        <div style="text-align: center; animation: pulse 2s infinite;">
+          <img src="https://img.icons8.com/color/96/windows-95.png" alt="Windows 95 Logo" style="width: 96px; height: 96px;">
+          <h1 style="font-size: 32px; margin: 20px 0;">Loading...</h1>
+        </div>
+      </div>
+    <div id="date-exe">
+        <img src="https://img.icons8.com/offices/40/undertale-heart.png" alt="File Icon">
+        date.exe
+    </div>
+    <div class="window" id="dialog">
+        <div class="title-bar">
+            <div class="minimize">
+                <div class="symbol"></div>
+            </div>
+            <div class="maximize">
+                <div class="symbol"></div>
+            </div>
+            <div class="close" onclick="closeDialog()"><div class="symbol"></div></div>
+        </div>
+        <div class="menu-bar">
+            <span>File</span>
+            <span>Edit</span>
+            <span>View</span>
+            <span>Help</span>
+        </div>
+        <div class="content-container">
+            <div class="content">
+                <div class="main">
+                    <p>Hey, I've been wanting to ask – fancy going out sometime?</p>
+                    <button class="windows95" id="yes">Yes</button>
+                    <button class="windows95" id="no">No</button>
+                </div>
+                <img class="cat-gif" src="" alt="Cute cat gif">
+                <div class="scroll">
+                    <div class="start"></div>
+                    <div class="progress"></div>
+                    <div class="end"></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer"></div>
+    </div>
+
+    <!-- Added icons -->
+   <!-- ... -->
+    <div class="icons-container">
+        <div class="mycomputer">
+            <img id="mycomputer" src="https://www.dropbox.com/s/vmit12fdi4azzr1/mycomputer.png?raw=1" alt="My Computer" />
+            <p>My Computer</p>
+        </div>
+        <div class="network">
+            <img id="network" src="https://www.dropbox.com/s/xcu1cqvr66oqwm4/network.png?raw=1" alt="Network Neighborhood" />
+            <p>Network<br>Neighborhood</p>
+        </div>
+        <div class="recycle">
+            <img id="recycle" src="https://www.dropbox.com/s/lytta04a3d4vtd7/recycle.png?raw=1" alt="Recycle Bin" />
+            <p>Recycle Bin</p>
+        </div>
+        <div class="inbox">
+            <img id="inbox" src="https://www.dropbox.com/s/9sxfb1a8lyafu5k/inbox.png?raw=1" alt="Inbox" />
+            <p>Inbox</p>
+        </div>
+        <div class="files">
+            <img id="files" src="https://www.dropbox.com/s/83xf2bzroqhfzqm/files.png?raw=1" alt="Files" />
+            <p>Files</p>
+        </div>
+    </div>
+    <div id="taskbar">
+        <div id="start-button">
+            <img src="https://img.icons8.com/color/32/windows-95.png" alt="Start">
+            <span>Start</span>
+        </div>
+        <div id="clock"></div>
+    </div>
+    <!-- ... -->
+    <script src="/scripts/index.js"></script>
+</body>
+</html>
