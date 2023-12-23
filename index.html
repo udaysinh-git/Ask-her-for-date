@@ -6,16 +6,13 @@
     <head>
         <title>Hiii !!!</title>
         <link rel="stylesheet" type="text/css" href="styles/styles.css">
-        <script>
-            window.onload = function() {
-            if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                document.getElementById('splash-screen').innerHTML = '<div style="text-align: center;"><h1 style="font-size: 32px; margin: 20px 0;">Please use a desktop to view this website</h1></div>';
-            }
-            };
-        </script>
+
     </head>
 </head>
 <body>
+    <div id="mobile-message" style="text-align: center;">
+        <h1 style="font-size: 32px; margin: 20px 0;">Please use a desktop to view this website</h1>
+    </div>
     <div id="splash-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #008080; color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'MS Sans Serif', Geneva, sans-serif; z-index: 1000; border: 2px solid #000; border-top-color: #fff; border-left-color: #fff;">
         <div style="text-align: center; animation: pulse 2s infinite;">
           <img src="https://img.icons8.com/color/96/windows-95.png" alt="Windows 95 Logo" style="width: 96px; height: 96px;">
