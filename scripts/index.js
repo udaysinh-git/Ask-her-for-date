@@ -103,25 +103,17 @@ let noButton = document.getElementById('no');
 
 noButton.addEventListener('mouseover', function(e) {
   noButton.style.cursor = 'not-allowed';
-  noButton.style.transition = 'none';
 
   // Calculate the new position of the button, ensuring it doesn't move more than 50px away from its current position
-  let randomX = noButton.offsetLeft + (Math.random() * 180 - 90);
-  let randomY = noButton.offsetTop + (Math.random() * 180 - 90);
+  let randomX = noButton.offsetLeft + (Math.random() * 320 - 160);
+  let randomY = noButton.offsetTop + (Math.random() * 320 - 160);
 
   noButton.style.position = 'absolute';
   noButton.style.left = `${randomX}px`;
   noButton.style.top = `${randomY}px`;
   let yesButton = document.getElementById('yes'); // Replace 'yes' with the actual id of your "Yes" button
   yesButton.style.position = 'relative'
-
-  // Re-enable transition after a delay
-  setTimeout(function() {
-    noButton.style.transition = 'left 0.2s, top 0.2s';
-  }, 1);
 });
-// JavaScript for comet cursor and emoji trail
-document.body.style.cursor = 'url("comet.png"), auto'; // replace "comet.png" with your image
 function minimizeDialog() {
   let dialog = document.getElementById('dialog');
   dialog.style.height = '30px'; // or any other minimal height
@@ -222,6 +214,16 @@ yesButton.addEventListener('click', function() {
     }
   }
   xhr.send();
+
+  document.body.innerHTML = '';
+  let thanksMessage = document.createElement('div');
+  thanksMessage.id = 'thanks-message';
+  thanksMessage.textContent = "Sweet! Can't wait for it . Any idea where you'd like to go let me know !?";
+  thanksMessage.style.zIndex = '1000';
+  thanksMessage.style.fontWeight = 'bold';
+  document.body.appendChild(thanksMessage);
+  thanksMessage.style.display = 'block';
+  fillPageWithAnimatedHeartsAndFlowers();
 });
 
 
@@ -247,3 +249,35 @@ function getRandomCatGif() {
     })
     .catch(error => console.error('Error:', error));
 }
+function createAnimatedElement(className) {
+  let element = document.createElement('div');
+  element.className = className + ' ' + className + '-' + Math.floor(Math.random() * 3 + 1); // Add different classes for different animation patterns
+  element.style.left = `${Math.random() * window.innerWidth}px`;
+  element.style.top = `${Math.random() * window.innerHeight}px`;
+  element.style.animationDuration = `${Math.random() * 2 + 3}s`; // Random duration between 3 and 5 seconds
+  element.style.animationDelay = `${Math.random() * 2}s`; // Random delay between 0 and 2 seconds
+  element.style.animationDuration = `${Math.random() * 5 + 5}s`;
+  element.style.animationIterationCount = 'infinite';
+  document.body.appendChild(element);
+}
+
+
+function fillPageWithAnimatedHeartsAndFlowers() {
+  for (let i = 0; i < 100; i++) { // Adjust the number of hearts and flowers as needed
+    createAnimatedElement('end_heart');
+    createAnimatedElement('end_flower');
+  }
+  // Display the  message after 2 seconds
+  setTimeout(function() {
+    let thanksMessage = document.getElementById('thanks-message');
+    thanksMessage.style.display = 'block';
+    thanksMessage.style.zIndex = '1000';
+    createAnimatedElement('end_heart');
+    createAnimatedElement('end_flower');
+  }, 100);
+}
+yesButton.addEventListener('click', function() {
+  document.body.className = 'romantic-lighting fade-in';
+  // Fill the page with animated hearts and flowers
+  fillPageWithAnimatedHeartsAndFlowers();
+});

@@ -300,6 +300,11 @@ body {
   transition: opacity 0.5s ease-out;
   opacity: 1; /* Add this line */
 }
+
+#no {
+  transition: left 0.5s ease-out, top 0.5s ease-out;
+}
+
 #no:hover {
   cursor: not-allowed;
 }
@@ -435,4 +440,101 @@ body {
   #mobile-message {
     display: none;
   }
+}
+
+
+
+
+@keyframes heart-flower-animation {
+  0% { transform: scale(0); opacity: 1; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+.end_heart, .end_flower {
+  position: absolute;
+  animation-name: heart-flower-animation;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.end_heart {
+  background-image: url('https://img.icons8.com/color/96/small-hearts--v1.png');
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+}
+
+.end_flower {
+  background-image: url('https://img.icons8.com/color-glass/96/bridal-bouquet.png');
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+}
+
+#thanks-message {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2em;
+  text-align: center;
+}
+
+@keyframes animation-1 {
+  0% { transform: scale(0); opacity: 1; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+@keyframes animation-2 {
+  0% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(-50px); opacity: 0.5; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+
+@keyframes animation-3 {
+  0% { transform: translateX(0); opacity: 1; }
+  50% { transform: translateX(50px); opacity: 0.5; }
+  100% { transform: translateX(0); opacity: 0; }
+}
+
+.end_heart-1, .end_flower-1 {
+  animation-name: animation-1;
+}
+
+.end_heart-2, .end_flower-2 {
+  animation-name: animation-2;
+}
+
+.end_heart-3, .end_flower-3 {
+  animation-name: animation-3;
+}
+
+
+.fade-out {
+  animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.fade-in {
+  animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.romantic-lighting {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 192, 203, 0.5); /* Pink overlay with 50% opacity */
+  z-index: 999;
 }
