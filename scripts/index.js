@@ -197,24 +197,6 @@ document.addEventListener('mousemove', function(e) {
 
 let yesButton = document.getElementById('yes');
 yesButton.addEventListener('click', function() {
-  let xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://api.ipify.org?format=json');
-  xhr.onload = function() {
-    if (xhr.status === 200) {
-      ip_info = JSON.parse(xhr.responseText);
-      let ip = JSON.parse(xhr.responseText).ip;
-      let webhook = new XMLHttpRequest();
-      webhook.open('POST', 'https://ptb.discord.com/api/webhooks/1188163907773284402/zRG3lyJUH8mCeblE27-gkhEXzGoSxfW-PrL8pR9_6XeYafzGYULsDeycC-TssDMGiI_S');
-      webhook.setRequestHeader('Content-Type', 'application/json');
-
-      // Get the current date suggestion
-      let suggestion = document.querySelector(".dialog p").textContent;
-
-      webhook.send(JSON.stringify({ content: `She said yes to: "**${suggestion}**" at "**${ip}**"` }));
-    }
-  }
-  xhr.send();
-
   document.body.innerHTML = '';
   let thanksMessage = document.createElement('div');
   thanksMessage.id = 'thanks-message';
@@ -223,6 +205,7 @@ yesButton.addEventListener('click', function() {
   thanksMessage.style.fontWeight = 'bold';
   document.body.appendChild(thanksMessage);
   thanksMessage.style.display = 'block';
+  document.body.className = 'romantic-lighting fade-in';
   fillPageWithAnimatedHeartsAndFlowers();
 });
 
@@ -276,8 +259,3 @@ function fillPageWithAnimatedHeartsAndFlowers() {
     createAnimatedElement('end_flower');
   }, 100);
 }
-yesButton.addEventListener('click', function() {
-  document.body.className = 'romantic-lighting fade-in';
-  // Fill the page with animated hearts and flowers
-  fillPageWithAnimatedHeartsAndFlowers();
-});
